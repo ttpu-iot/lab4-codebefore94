@@ -7,11 +7,9 @@
 #define BLYNK_TEMPLATE_NAME "iot25 lab4"
 #define BLYNK_AUTH_TOKEN "-4u-dEEvjLNlLMSy_kcEO97EmqdyUvEM"
 
-
 /* Comment this out to disable prints and save space */
 #define BLYNK_PRINT Serial
 // #define BLYNK_DEBUG
-
 
 #include <Arduino.h>
 
@@ -28,8 +26,6 @@
 #include <hd44780.h>
 #include <hd44780ioClass/hd44780_I2Cexp.h>
 
-
-
 //----------------------------------------------
 // GLOBAL VARIABLES and CONSTANTS
 // your code here
@@ -45,10 +41,10 @@ const int LCD_ROWS = 2;
 
 // Your WiFi credentials.
 // Set password to "" for open networks.
-char ssid[] = "Wokwi-GUEST";
-char pass[] = "";
-// char ssid[] = "MaxPC";
-// char pass[] = "polito2025";
+// char ssid[] = "Wokwi-GUEST";
+// char pass[] = "";
+char ssid[] = "MaxPC";
+char pass[] = "polito2025";
 
 //----------------------------------------------
 // FUNCTIONS

@@ -3,9 +3,9 @@
 
 
 /* Fill-in information from Blynk Device Info here */
-#define BLYNK_TEMPLATE_ID "TMPL2rkMzqzyl"
-#define BLYNK_TEMPLATE_NAME "IoT25 ESP32 Template"
-#define BLYNK_AUTH_TOKEN "QaW1JxlrB6rwLC0YXZutzip6dwYsv7HZ"
+#define BLYNK_TEMPLATE_ID "TMPL6uCkbn7qu"
+#define BLYNK_TEMPLATE_NAME "iot25 lab4"
+#define BLYNK_AUTH_TOKEN "-4u-dEEvjLNlLMSy_kcEO97EmqdyUvEM"
 
 /* Comment this out to disable prints and save space */
 #define BLYNK_PRINT Serial
@@ -27,6 +27,7 @@ const int RED_PIN = 26;
 const int GREEN_PIN = 27;
 const int BLUE_PIN = 14;
 const int YELLOW_PIN = 12;
+const int lightSensor = 33; // Analog pin for light sensor
 
 // LCD Configuration
 hd44780_I2Cexp lcd;  // Auto-detect I2C address
@@ -90,4 +91,17 @@ void setup(void)
 void loop(void) 
 {
     Blynk.run();
+
+    // reading and sending light sensor value every 2 second
+    static unsigned long lastTime = 0;
+    unsigned long currentTime = millis();
+    if (currentTime - lastTime >= 2000) { // Update every second
+        lastTime = currentTime;
+
+        int sensor = analogRead(lightSensor);
+        
+        Blynk.virtualWrite(V8, sensor);
+        Serial.print("Light Sensor Value: ");
+        Serial.println(sensor);
+    }
 }
